@@ -61,15 +61,16 @@ class _MyHomePageState extends State<MyHomePage> {
                     ],
                   ),
                 ),
-                Container(
+                SizedBox(
                   height: 200,
                   width: double.infinity,
                   child: ListView(
                     scrollDirection: Axis.horizontal,
+                    padding: const EdgeInsets.only(left: 8),
                     itemExtent: 160,
                     children: [
                       Padding(
-                        padding: const EdgeInsets.only(left: 8.0),
+                        padding: const EdgeInsets.only(right: 8.0),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -101,7 +102,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(left: 8.0),
+                        padding: const EdgeInsets.only(right: 8.0),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -133,7 +134,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(left: 8.0),
+                        padding: const EdgeInsets.only(right: 8.0),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -189,6 +190,104 @@ class _MyHomePageState extends State<MyHomePage> {
                     ],
                   ),
                 ),
+                SizedBox(
+                  width: double.infinity,
+                  height: 240,
+                  child: GridView.count(
+                    scrollDirection: Axis.horizontal,
+                    padding: const EdgeInsets.all(12),
+                    crossAxisSpacing: 12,
+                    mainAxisSpacing: 12,
+                    crossAxisCount: 2,
+                    childAspectRatio: 2 / 3,
+                    children: [
+                      Container(
+                        padding: const EdgeInsets.all(8),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8),
+                          gradient: const LinearGradient(
+                            begin: FractionalOffset.topLeft,
+                            end: FractionalOffset.bottomRight,
+                            colors: [Colors.purple, Colors.black],
+                          ),
+                        ),
+                        alignment: Alignment.center,
+                        child: const Text(
+                          'クラシック',
+                          style: TextStyle(fontSize: 12),
+                        ),
+                      ),
+                      Container(
+                        padding: const EdgeInsets.all(8),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8),
+                          gradient: const LinearGradient(
+                            begin: FractionalOffset.topLeft,
+                            end: FractionalOffset.bottomRight,
+                            colors: [Colors.yellow, Colors.black],
+                          ),
+                        ),
+                        alignment: Alignment.center,
+                        child: const Text(
+                          'カントリー',
+                          style: TextStyle(fontSize: 12),
+                        ),
+                      ),
+                      Container(
+                        padding: const EdgeInsets.all(8),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8),
+                          gradient: const LinearGradient(
+                            begin: FractionalOffset.topLeft,
+                            end: FractionalOffset.bottomRight,
+                            colors: [Colors.pink, Colors.red],
+                          ),
+                        ),
+                        alignment: Alignment.center,
+                        child: const Text(
+                          'ポップ',
+                          style: TextStyle(fontSize: 12),
+                        ),
+                      ),
+                      Container(
+                        padding: const EdgeInsets.all(8),
+                        decoration: BoxDecoration(
+                          color: Colors.blue,
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        alignment: Alignment.center,
+                        child: const Text(
+                          'ロック',
+                          style: TextStyle(fontSize: 12),
+                        ),
+                      ),
+                      Container(
+                        padding: const EdgeInsets.all(8),
+                        decoration: BoxDecoration(
+                          color: Colors.green,
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        alignment: Alignment.center,
+                        child: const Text(
+                          'クラシック',
+                          style: TextStyle(fontSize: 12),
+                        ),
+                      ),
+                      Container(
+                        padding: const EdgeInsets.all(8),
+                        decoration: BoxDecoration(
+                          color: Colors.red,
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        alignment: Alignment.center,
+                        child: const Text(
+                          'クラシック',
+                          style: TextStyle(fontSize: 12),
+                        ),
+                      ),
+                    ],
+                  ),
+                )
               ],
             ),
           ),
