@@ -14,7 +14,7 @@ class AppRouter {
         return _buildRoute(const MyHomePage());
 
       case AppRoutes.player:
-        return _buildRoute(const PlayerPage());
+        return _buildRoute(const PlayerPage(), settings: settings);
 
       default:
         return null;
