@@ -27,9 +27,18 @@ class _PlayerPageState extends State<PlayerPage> {
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.transparent,
-        leading: const Icon(
-          Icons.chevron_left,
-          size: 36,
+        leading: Builder(
+          builder: (BuildContext context) {
+            return IconButton(
+              icon: const Icon(
+                Icons.chevron_left,
+                size: 36,
+              ),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            );
+          },
         ),
       ),
       body: Center(
