@@ -1,7 +1,35 @@
 import 'package:flutter/material.dart';
+import 'package:spotify_ui/models/album.dart';
+import 'package:spotify_ui/routes/app_routes.dart';
 
-class MyHomePage extends StatelessWidget {
+class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
+
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  final List<Album> albums = [
+    Album(
+      imagePath: 'assets/images/sample1.jpeg',
+      title: 'capture419',
+      artist: 'ペトロールズ',
+      playtime: const Duration(minutes: 6, seconds: 20),
+    ),
+    Album(
+      imagePath: 'assets/images/sample2.jpeg',
+      title: '無罪モラトリアム',
+      artist: '椎名林檎',
+      playtime: const Duration(minutes: 5, seconds: 30),
+    ),
+    Album(
+      imagePath: 'assets/images/sample3.jpg',
+      title: 'FEEL GOOD',
+      artist: 'SIRUP',
+      playtime: const Duration(minutes: 4, seconds: 40),
+    ),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -40,108 +68,54 @@ class MyHomePage extends StatelessWidget {
                 SizedBox(
                   height: 200,
                   width: double.infinity,
-                  child: ListView(
+                  child: ListView.builder(
                     scrollDirection: Axis.horizontal,
                     padding: const EdgeInsets.only(left: 8),
                     itemExtent: 160,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(right: 8.0),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.only(bottom: 6.0),
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.circular(8),
-                                child: Image.asset(
-                                  'assets/images/sample1.jpeg',
+                    itemCount: albums.length,
+                    itemBuilder: (context, index) {
+                      return GestureDetector(
+                        onTap: () {
+                          Navigator.pushNamed(
+                            context,
+                            AppRoutes.player,
+                            arguments: albums[index],
+                          );
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.only(right: 8.0),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(bottom: 6.0),
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(8),
+                                  child: Image.asset(
+                                    albums[index].imagePath,
+                                  ),
                                 ),
                               ),
-                            ),
-                            Text(
-                              'capture419',
-                              style: TextStyle(
-                                fontSize: 12,
-                                color: Colors.grey[300],
-                              ),
-                            ),
-                            const Text(
-                              'ペトロールズ',
-                              style: TextStyle(
-                                fontSize: 10,
-                                color: Colors.grey,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(right: 8.0),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.only(bottom: 6.0),
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.circular(8),
-                                child: Image.asset(
-                                  'assets/images/sample2.jpeg',
+                              Text(
+                                albums[index].title,
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  color: Colors.grey[300],
                                 ),
                               ),
-                            ),
-                            Text(
-                              '無罪モラトリアム',
-                              style: TextStyle(
-                                fontSize: 12,
-                                color: Colors.grey[300],
-                              ),
-                            ),
-                            const Text(
-                              '椎名林檎',
-                              style: TextStyle(
-                                fontSize: 10,
-                                color: Colors.grey,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(right: 8.0),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.only(bottom: 6.0),
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.circular(8),
-                                child: Image.asset(
-                                  'assets/images/sample3.jpg',
+                              Text(
+                                albums[index].artist,
+                                style: const TextStyle(
+                                  fontSize: 10,
+                                  color: Colors.grey,
                                 ),
                               ),
-                            ),
-                            Text(
-                              'FEEL GOOD',
-                              style: TextStyle(
-                                fontSize: 12,
-                                color: Colors.grey[300],
-                              ),
-                            ),
-                            const Text(
-                              'SIRUP',
-                              style: TextStyle(
-                                fontSize: 10,
-                                color: Colors.grey,
-                              ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
-                      ),
-                    ],
+                      );
+                    },
                   ),
                 ),
               ],
