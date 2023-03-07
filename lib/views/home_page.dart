@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:spotify_ui/models/album.dart';
+import 'package:spotify_ui/models/category.dart';
 import 'package:spotify_ui/routes/app_routes.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -29,6 +30,15 @@ class _MyHomePageState extends State<MyHomePage> {
       artist: 'SIRUP',
       playtime: const Duration(minutes: 4, seconds: 40),
     ),
+  ];
+
+  final List<Category> categories = [
+    Category(name: 'クラシック', color: Colors.purple),
+    Category(name: 'カントリー', color: Colors.yellow),
+    Category(name: 'ポップ', color: Colors.pink),
+    Category(name: 'ロック', color: Colors.blue),
+    Category(name: 'ジャズ', color: Colors.green),
+    Category(name: 'パンク', color: Colors.red),
   ];
 
   @override
@@ -143,99 +153,35 @@ class _MyHomePageState extends State<MyHomePage> {
                 SizedBox(
                   width: double.infinity,
                   height: 240,
-                  child: GridView.count(
+                  child: GridView.builder(
                     scrollDirection: Axis.horizontal,
                     padding: const EdgeInsets.all(12),
-                    crossAxisSpacing: 12,
-                    mainAxisSpacing: 12,
-                    crossAxisCount: 2,
-                    childAspectRatio: 2 / 3,
-                    children: [
-                      Container(
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      childAspectRatio: 2 / 3,
+                      mainAxisSpacing: 12,
+                      crossAxisSpacing: 12,
+                    ),
+                    itemCount: 6,
+                    itemBuilder: (context, index) {
+                      return Container(
                         padding: const EdgeInsets.all(8),
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(8),
-                          gradient: const LinearGradient(
+                          borderRadius: BorderRadius.circular(12),
+                          gradient: LinearGradient(
                             begin: FractionalOffset.topLeft,
                             end: FractionalOffset.bottomRight,
-                            colors: [Colors.purple, Colors.black],
+                            colors: [categories[index].color, Colors.black],
                           ),
                         ),
                         alignment: Alignment.center,
-                        child: const Text(
-                          'クラシック',
-                          style: TextStyle(fontSize: 12),
+                        child: Text(
+                          categories[index].name,
+                          style: const TextStyle(fontSize: 12),
                         ),
-                      ),
-                      Container(
-                        padding: const EdgeInsets.all(8),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(8),
-                          gradient: const LinearGradient(
-                            begin: FractionalOffset.topLeft,
-                            end: FractionalOffset.bottomRight,
-                            colors: [Colors.yellow, Colors.black],
-                          ),
-                        ),
-                        alignment: Alignment.center,
-                        child: const Text(
-                          'カントリー',
-                          style: TextStyle(fontSize: 12),
-                        ),
-                      ),
-                      Container(
-                        padding: const EdgeInsets.all(8),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(8),
-                          gradient: const LinearGradient(
-                            begin: FractionalOffset.topLeft,
-                            end: FractionalOffset.bottomRight,
-                            colors: [Colors.pink, Colors.red],
-                          ),
-                        ),
-                        alignment: Alignment.center,
-                        child: const Text(
-                          'ポップ',
-                          style: TextStyle(fontSize: 12),
-                        ),
-                      ),
-                      Container(
-                        padding: const EdgeInsets.all(8),
-                        decoration: BoxDecoration(
-                          color: Colors.blue,
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                        alignment: Alignment.center,
-                        child: const Text(
-                          'ロック',
-                          style: TextStyle(fontSize: 12),
-                        ),
-                      ),
-                      Container(
-                        padding: const EdgeInsets.all(8),
-                        decoration: BoxDecoration(
-                          color: Colors.green,
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                        alignment: Alignment.center,
-                        child: const Text(
-                          'ジャズ',
-                          style: TextStyle(fontSize: 12),
-                        ),
-                      ),
-                      Container(
-                        padding: const EdgeInsets.all(8),
-                        decoration: BoxDecoration(
-                          color: Colors.red,
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                        alignment: Alignment.center,
-                        child: const Text(
-                          'パンク',
-                          style: TextStyle(fontSize: 12),
-                        ),
-                      ),
-                    ],
+                      );
+                    },
                   ),
                 )
               ],
