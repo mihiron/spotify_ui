@@ -245,7 +245,7 @@ class MyHomePage extends StatelessWidget {
                         ),
                         alignment: Alignment.center,
                         child: const Text(
-                          'クラシック',
+                          'ジャズ',
                           style: TextStyle(fontSize: 12),
                         ),
                       ),
@@ -257,7 +257,7 @@ class MyHomePage extends StatelessWidget {
                         ),
                         alignment: Alignment.center,
                         child: const Text(
-                          'クラシック',
+                          'パンク',
                           style: TextStyle(fontSize: 12),
                         ),
                       ),
