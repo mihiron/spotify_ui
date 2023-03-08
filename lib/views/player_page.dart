@@ -94,7 +94,6 @@ class _PlayerPageState extends State<PlayerPage> {
                 value: _sliderTime,
                 min: 0,
                 max: album.playtime.inSeconds.toDouble(),
-                divisions: album.playtime.inSeconds,
                 onChanged: _changeSlider,
               ),
             ),
